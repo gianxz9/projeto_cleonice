@@ -4,10 +4,10 @@
 }
 #topo{
 	height: 70px;
-	background: orange;
+	background: #D40C0C;
 }
 #menu{
-	background-color: rgba(0,0,255,0.3);
+	background-color: white;
 }
 #menu ul, li{
 	display: inline-table;
@@ -16,7 +16,7 @@
 }
 #menu ul li a{
 	text-decoration: nome;
-	color: white;
+	color: black;
 }
 #menu ul li:hover{
 	background-color: rgba(0,0,0,0.5);
