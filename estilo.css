@@ -1,6 +1,7 @@
 *{
 	margin: 0;
 	padding: 0;
+	background-color: black;
 }
 #topo{
 	height: 70px;
@@ -16,7 +17,7 @@
 }
 #menu ul li a{
 	text-decoration: nome;
-	color: black;
+	color: white;
 }
 #menu ul li:hover{
 	background-color: rgba(0,0,0,0.5);
@@ -72,7 +73,15 @@
 
 img{
 	max-width: 90%;
-	width: 10cm;
-	height: 12cm;
+	width: 13cm;
+	height: 15cm;
 	object-fit: contain;
+}
+
+.slogan-image {
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin: 15px;
+    border-radius: 50%;
 }
