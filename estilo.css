@@ -78,10 +78,15 @@ img{
 	object-fit: contain;
 }
 
-.slogan-image {
-    float: left;
-    height: 100px;
-    width: 100px;
-    margin: 15px;
-    border-radius: 50%;
-}
+.nav-container {
+ 	max-width: 1200px;
+ 	position: relative;
+ 	margin-right: auto;
+ 	margin-left: auto;
+ }
+
+#logo {
+ 	width: 140px;
+ 	height: 65px;
+ 	margin-top: 25px;
+ }
