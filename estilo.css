@@ -1,3 +1,11 @@
+html {
+  font-family: "Overpass", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+	font-size: 25px;
+}
+
 *{
 	margin: 0;
 	padding: 0;
@@ -5,25 +13,26 @@
 }
 #topo{
 	height: 70px;
-	background: #D40C0C;
+	background-color: #D40C0C;
 }
 #menu{
 	background-color: white;
 }
 #menu ul, li{
 	display: inline-table;
-	padding: 20px 30px;
+	padding: 10px 20px;
 	cursor: pointer;
+	color: #D40C0C
 }
 #menu ul li a{
-	text-decoration: nome;
+	text-decoration: none;
 	color: white;
 }
 #menu ul li:hover{
 	background-color: rgba(0,0,0,0.5);
 }
 #conteudo{
-	background-color: gray;
+	background-color: black;
 	min-height: 70px;
 }
 #slider {
@@ -74,7 +83,7 @@
 img{
 	max-width: 90%;
 	width: 13cm;
-	height: 15cm;
+	height: 15cm;black
 	object-fit: contain;
 }
 
@@ -86,7 +95,14 @@ img{
  }
 
 #logo {
- 	width: 140px;
- 	height: 65px;
+ 	width: 170px;
+ 	height: 85px;
  	margin-top: 25px;
  }
+
+ .nav-container {
+  max-width: 1200px;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+}
