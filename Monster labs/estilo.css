@@ -1,3 +1,7 @@
+html {
+	background-color: #000;
+}
+
 .container{
 	width: 100%;
 	margin-top: 10%;
@@ -6,7 +10,7 @@
 }
 .container h2
 {
-	background: #0062cc;
+	background: #D40C0C;
 	color:#fff;
 	width: 250px;
 	font-size: 24px;
@@ -16,7 +20,7 @@
 .container h2::after
 {
 	content: '';
-	border-top: 40px solid #0062cc;
+	border-top: 40px solid #D40C0C;
 	border-right: 40px solid transparent;
 	position: relative;
 	left: 48px;
@@ -29,12 +33,13 @@ img{
 	width: 100%;
 }
 .product-bottom .fa{
-	color: #28a745;
+	color: #fff;
 	font-size: 10px;
 }
 .product-bottom h3{
 	font-size: 15px;
 	font-weight: bold;
+	color: #000;
 }
 .product-bottom h5{
 	font-size: 15px;
@@ -74,4 +79,13 @@ img{
 	background: transparent !important;
 	border: none !important;
 	box-shadow: none !important;
+}
+
+.product-top {
+	border: 3px #000;
+	background-color: #D40C0C;
+}
+
+.pagina {
+	background-color: #000;
 }
