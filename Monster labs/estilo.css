@@ -45,7 +45,7 @@ img{
 	font-size: 15px;
 	padding-bottom: 10px;
 }
-.overlay 
+.overlay
 {
 	display: block;
 	opacity: 0;
@@ -73,6 +73,7 @@ img{
 	padding: 7px;
 	margin: 5%;
 	margin-bottom: 5%;
+	background-color: #D40C0C;
 }
 .overlay .btn-secondary
 {
