@@ -1,0 +1,33 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: sans-serif;
+    padding: 20px;
+  }
+  h1 {
+    color: #D40C0C;
+  }
+  .item {
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .item button {
+    background-color: #D40C0C;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .finalizar {
+    margin-top: 20px;
+    background-color: #D40C0C;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+  }

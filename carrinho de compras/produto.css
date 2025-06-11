@@ -1,0 +1,29 @@
+body {
+  background-color: #000;
+  color: white;
+  font-family: sans-serif;
+  padding: 20px;
+}
+h1 {
+  color: #D40C0C;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+}
+input, button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+input {
+  background-color: #222;
+  color: white;
+}
+button {
+  background-color: #D40C0C;
+  color: white;
+  cursor: pointer;
+}
