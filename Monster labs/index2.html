@@ -8,6 +8,10 @@
 <body>
 	<div class="pagina">
 
+		<div style="text-align: center; margin: 20px;">
+			<a href="../carrinho de compras/carrinho.html" class="btn btn-danger">🛒 Ir para o Carrinho</a>
+		  </div>		  
+
 		<div class="container">
 		<h2>Proteinas</h2>
 		<div class="row">
@@ -54,5 +58,28 @@
 	</div>
 	</div>
 	</div>
+	<script>
+		function adicionarAoCarrinho(nome, preco) {
+		  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+		  carrinho.push({ nome, preco });
+		  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+		  alert(`"${nome}" adicionado ao carrinho!`);
+		}
+	  
+		document.addEventListener('DOMContentLoaded', function () {
+		  const produtos = document.querySelectorAll('.product-top');
+		  produtos.forEach(prod => {
+			const nome = prod.querySelector('h3')?.innerText || "Produto sem nome";
+			const precoTexto = prod.querySelector('h5')?.innerText || "R$0";
+			const preco = parseFloat(precoTexto.replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+	  
+			const btns = prod.querySelectorAll('.fa-shopping-cart');
+			btns.forEach(btn => {
+			  btn.parentElement.onclick = () => adicionarAoCarrinho(nome, preco);
+			});
+		  });
+		});
+	  </script>
+	  
 </body>
 </html>
