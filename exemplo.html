@@ -37,5 +37,34 @@
       </ul>
     </nav>
     <section id="conteudo"></section>
+    <script>
+      function adicionarAoCarrinho(nome, preco) {
+        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    
+        // Se quiser evitar duplicados e só somar quantidade, dá pra melhorar depois.
+        carrinho.push({ nome, preco, quantidade: 1 });
+    
+        localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        alert(`"${nome}" adicionado ao carrinho!`);
+      }
+    
+      document.addEventListener('DOMContentLoaded', function () {
+        const produtos = document.querySelectorAll('.product-top');
+        produtos.forEach(prod => {
+          const nome = prod.querySelector('h3')?.innerText || "Produto sem nome";
+          const precoTexto = prod.querySelector('h5')?.innerText || "R$0";
+          const preco = parseFloat(precoTexto.replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+    
+          const btnCarrinho = prod.querySelector('button[title="Adicionar ao carrinho"]');
+          if (btnCarrinho) {
+            btnCarrinho.addEventListener('click', (e) => {
+              e.stopPropagation();
+              adicionarAoCarrinho(nome, preco);
+            });
+          }
+        });
+      });
+    </script>
+    
  </body>
  </html>

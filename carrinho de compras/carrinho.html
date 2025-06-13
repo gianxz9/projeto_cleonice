@@ -1,17 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Meu Carrinho</title>
-  <link rel="stylesheet" href="../carrinho de compras/carrinho.css">
+  <meta charset="UTF-8" />
+  <title>Carrinho de Compras</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
 <body>
+  <div class="container mt-4">
+    <h2>Seu Carrinho</h2>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Preço (R$)</th>
+          <th>Quantidade</th>
+          <th>Total (R$)</th>
+        </tr>
+      </thead>
+      <tbody id="carrinho-lista"></tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3" class="text-right">Total Geral:</th>
+          <th id="total-geral">0,00</th>
+        </tr>
+      </tfoot>
+    </table>
 
-  <h1>Seu Carrinho</h1>
-  <div id="carrinho"></div>
-  <button class="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+    <a href="index.html" class="btn btn-primary">Continuar Comprando</a>
+  </div>
 
-  <script src="../carrinho de compras/carrinho.js"></script>
+  <script>
+    function carregarCarrinho() {
+      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+      const tbody = document.getElementById('carrinho-lista');
+      tbody.innerHTML = '';
+
+      let totalGeral = 0;
+
+      // Agrupar produtos iguais
+      const agrupados = {};
+      carrinho.forEach(item => {
+        if (agrupados[item.nome]) {
+          agrupados[item.nome].quantidade += 1;
+        } else {
+          agrupados[item.nome] = {...item};
+        }
+      });
+
+      Object.values(agrupados).forEach(item => {
+        const totalItem = item.preco * item.quantidade;
+        totalGeral += totalItem;
+
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${item.nome}</td>
+          <td>${item.preco.toFixed(2).replace('.', ',')}</td>
+          <td>${item.quantidade}</td>
+          <td>${totalItem.toFixed(2).replace('.', ',')}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('total-geral').innerText = totalGeral.toFixed(2).replace('.', ',');
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarCarrinho);
+  </script>
 </body>
 </html>
-
