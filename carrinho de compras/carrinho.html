@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Carrinho de Compras</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../carrinho de compras/carrinho.css" />
 </head>
 <body>
   <div class="container mt-4">
@@ -15,6 +15,7 @@
           <th>Preço (R$)</th>
           <th>Quantidade</th>
           <th>Total (R$)</th>
+          <th>Ação</th>
         </tr>
       </thead>
       <tbody id="carrinho-lista"></tbody>
@@ -22,11 +23,18 @@
         <tr>
           <th colspan="3" class="text-right">Total Geral:</th>
           <th id="total-geral">0,00</th>
+          <th></th>
         </tr>
       </tfoot>
     </table>
 
-    <a href="index.html" class="btn btn-primary">Continuar Comprando</a>
+    <div class="text-center mt-4">
+      <a href="../exemplo.html" class="btn btn-continuar">
+          🛍️ Continuar Comprando
+      </a>
+  </div>
+  
+    <button class="btn btn-success" onclick="finalizarCompra()">Finalizar Compra</button>
   </div>
 
   <script>
@@ -37,17 +45,7 @@
 
       let totalGeral = 0;
 
-      // Agrupar produtos iguais
-      const agrupados = {};
-      carrinho.forEach(item => {
-        if (agrupados[item.nome]) {
-          agrupados[item.nome].quantidade += 1;
-        } else {
-          agrupados[item.nome] = {...item};
-        }
-      });
-
-      Object.values(agrupados).forEach(item => {
+      carrinho.forEach((item, index) => {
         const totalItem = item.preco * item.quantidade;
         totalGeral += totalItem;
 
@@ -57,11 +55,27 @@
           <td>${item.preco.toFixed(2).replace('.', ',')}</td>
           <td>${item.quantidade}</td>
           <td>${totalItem.toFixed(2).replace('.', ',')}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="remover(${index})">Remover</button></td>
         `;
         tbody.appendChild(tr);
       });
 
       document.getElementById('total-geral').innerText = totalGeral.toFixed(2).replace('.', ',');
+    }
+
+    function remover(index) {
+      const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+      carrinho.splice(index, 1);
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      carregarCarrinho();
+    }
+
+    function finalizarCompra() {
+      if (confirm('Deseja realmente finalizar a compra?')) {
+        alert('Compra finalizada com sucesso!');
+        localStorage.removeItem('carrinho');
+        carregarCarrinho();
+      }
     }
 
     document.addEventListener('DOMContentLoaded', carregarCarrinho);

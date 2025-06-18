@@ -1,33 +1,139 @@
+/* Fundo geral */
 body {
-    background-color: #000;
-    color: #fff;
-    font-family: sans-serif;
-    padding: 20px;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container do carrinho */
+.container {
+  background-color: #111;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(212, 12, 12, 0.6);
+  max-width: 900px;
+  width: 95%;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* Título */
+h2 {
+  color: #D40C0C;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Tabela */
+.table {
+  background-color: #111;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #111;
+  color: white;
+  text-align: center;
+  border: none;
+  font-size: 1rem;
+}
+
+.table td {
+  background-color: #1a1a1a;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+  border: none;
+}
+
+.table tfoot th {
+  background-color: #111;
+  color: white;
+  border: none;
+}
+
+/* Bordas */
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #111;
+}
+
+/* Botões padrão */
+.btn {
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Botão continuar comprando */
+.btn-continuar {
+  background-color: #D40C0C;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(212, 12, 12, 0.5);
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
+}
+
+.btn-continuar:hover {
+  background-color: #a80a0a;
+  transform: scale(1.05);
+  color: white;
+}
+
+.btn-continuar:active {
+  transform: scale(0.97);
+}
+
+/* Botões ações */
+.btn-primary,
+.btn-danger {
+  background-color: #D40C0C;
+  border: none;
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+  background-color: #a50b0b;
+  transform: scale(1.05);
+}
+
+/* Footer */
+tfoot th {
+  font-size: 1.1rem;
+}
+
+/* Animação suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+      padding: 20px;
   }
-  h1 {
-    color: #D40C0C;
+
+  .table th, .table td {
+      font-size: 0.9rem;
   }
-  .item {
-    border-bottom: 1px solid #333;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  .btn {
+      padding: 6px 14px;
   }
-  .item button {
-    background-color: #D40C0C;
-    border: none;
-    color: #fff;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  .finalizar {
-    margin-top: 20px;
-    background-color: #D40C0C;
-    border: none;
-    color: white;
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-    cursor: pointer;
-  }
+}

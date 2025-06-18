@@ -15,70 +15,77 @@
 		<div class="container">
 		<h2>Roupas</h2>
 		<div class="row">
-	<div class="col-md-3">
-		<div class="product-top">
-		<img src="img4.jpg">
-		<div class="overlay">
-			<button type="button" class="btn btn-secondary" title="Compra rápida"><i class="fa fa-eye"></i></button>
-			<button type="button" class="btn btn-secondary" title="Adicionar lista produtos que quero"><i class="fa fa-heart-o"></i></button>
-			<button type="button" class="btn btn-secondary" title="Adicionar ao carrinho"><i class="fa fa-shopping-cart"></i></button>
+			<div class="col-md-3">
+				<div class="product-top">
+				<img src="img4.jpg">
+				<div class="overlay">
+					<button type="button" class="btn btn-secondary" title="Compra rápida"><i class="fa fa-eye"></i></button>
+					<button type="button" class="btnWhey Protein Concentrado Sabor Açai com Guarana btn-secondary" title="Adicionar lista produtos que quero"><i class="fa fa-heart-o"></i></button>
+					<button type="button" class="btn btn-secondary" title="Adicionar ao carrinho"><i class="fa fa-shopping-cart"></i></button>
+					</div>
+		
+					<div class="product-bottom text-center">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>
+					<h3>Camisa Oversized Like A Machine</h3>
+					<h5>R$120,00</h5>
+					</div>
+				</div>
 			</div>
-
-			<div class="product-bottom text-center">
-			<i class="fa fa-star"></i>
-			<i class="fa fa-star"></i>
-			<i class="fa fa-star"></i>
-			<i class="fa fa-star-half-o"></i>
-			<i class="fa fa-star-o"></i>
-			<h3>Camisa Oversized Like A Machine</h3>
-			<h5>R$120,00</h5>
+			<div class="col-md-3">
+				<div class="product-top">
+				<img src="img5.jpg">
+				<div class="overlay">
+					<button type="button" class="btn btn-secondary" title="Compra rápida"><i class="fa fa-eye"></i></button>
+					<button type="button" class="btnWhey Protein Concentrado Sabor Açai com Guarana btn-secondary" title="Adicionar lista produtos que quero"><i class="fa fa-heart-o"></i></button>
+					<button type="button" class="btn btn-secondary" title="Adicionar ao carrinho"><i class="fa fa-shopping-cart"></i></button>
+					</div>
+		
+					<div class="product-bottom text-center">
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star"></i>
+					<i class="fa fa-star-o"></i>
+					<h3>Camisa Oversized Help</h3>
+					<h5>R$120,00</h5>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="product-top">
-		<img src="img5.jpg">
-		<div class="overlay">
-			<button type="button" class="btn btn-secondary" title="Compra rápida"><i class="fa fa-eye"></i></button>
-			<button type="button" class="btn btn-secondary" title="Adicionar lista produtos que quero"><i class="fa fa-heart-o"></i></button>
-			<button type="button" class="btn btn-secondary" title="Adicionar ao carrinho"><i class="fa fa-shopping-cart"></i></button>
-			</div>
-
-			<div class="product-bottom text-center">
-			<i class="fa fa-star"></i>
-			<i class="fa fa-star"></i>
-			<i class="fa fa-star"></i>
-			<i class="fa fa-star"></i>
-			<i class="fa fa-star-half-o"></i>
-			<h3>Camisa Oversized Like A Machine </h3>
-			<h5>R$120,00</h5>
-			</div>
-		</div>
-	</div>
 	</div>
 	</div>
 	</div>
 	</div>
 	<script>
 		function adicionarAoCarrinho(nome, preco) {
-		  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-		  carrinho.push({ nome, preco });
-		  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-		  alert(`"${nome}" adicionado ao carrinho!`);
+			const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+			const itemExistente = carrinho.find(item => item.nome === nome);
+			if (itemExistente) {
+			itemExistente.quantidade += 1;
+			} else {
+			carrinho.push({ nome, preco, quantidade: 1 });
+			}
+
+			localStorage.setItem('carrinho', JSON.stringify(carrinho));
+			alert(`"${nome}" adicionado ao carrinho!`);
 		}
-	  
+
 		document.addEventListener('DOMContentLoaded', function () {
-		  const produtos = document.querySelectorAll('.product-top');
-		  produtos.forEach(prod => {
+			const produtos = document.querySelectorAll('.product-top');
+			produtos.forEach(prod => {
 			const nome = prod.querySelector('h3')?.innerText || "Produto sem nome";
 			const precoTexto = prod.querySelector('h5')?.innerText || "R$0";
 			const preco = parseFloat(precoTexto.replace(/[^\d,]/g, '').replace(',', '.')) || 0;
-	  
+
 			const btns = prod.querySelectorAll('.fa-shopping-cart');
 			btns.forEach(btn => {
-			  btn.parentElement.onclick = () => adicionarAoCarrinho(nome, preco);
+				btn.parentElement.onclick = () => adicionarAoCarrinho(nome, preco);
 			});
-		  });
+			});
 		});
 	  </script>
 	  
